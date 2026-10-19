@@ -119,7 +119,7 @@ python tools\scan_secrets.py --root .. --json ..\.diag\secrets_scan.json
 | 首次提交 | `cc9640e` —— 59 个文件（源码 + 文档 + 夹具），无二进制、无 `.diag/` |
 | 版本 | `v1.0.0` |
 | Release | <https://github.com/DeepWaterrrrr/KHDownloader/releases/tag/v1.0.0> |
-| 附件 | `KHDownloader-v1.0.0-win64.zip`（44,674,684 字节，SHA-256 `bbbcd426…c5bc2`）、`KHDownloader.exe`（43,618,401 字节） |
+| 附件 | `KHDownloader-v1.0.0-win64.zip`（大小与 SHA-256 见包内 `SHA256SUMS.txt`）、`KHDownloader.exe`（43,618,401 字节） |
 | 提交身份 | 仓库内单独设为 `DeepWaterrrrr <DeepWaterrrrr@users.noreply.github.com>`，未使用全局真实邮箱 |
 
 已处理：绝对路径全部换成 `C:\Users\<用户名>`；`verify_user_original_v008.py` 里硬编码的本机目录改为环境变量 `KHD_ORIG_DIR`。
