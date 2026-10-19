@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# PyInstaller 构建中间物
+source/build/
+source/dist/
+build/
+dist/
+
+# 本地调试 / 取证产物（.diag 存一次性日志、探针、临时包）
+.diag/
+release/
+*.pyz
+
+# 可执行文件与发布包走 GitHub Releases，不进 Git（单文件 43 MB+，且不可瘦身）
+*.exe
+*.zip
+
+# 发布包哈希清单（描述的是某次打包结果，路径会随仓库结构变化）
+_MANIFEST.json
+_RELEASE_MANIFEST.json
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# 本地个人配置
+.env
+.env.*
+*.local.json

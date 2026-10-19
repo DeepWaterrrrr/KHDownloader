@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--
+  测试夹具：**没有** <table id="songlist"> 的专辑页（合成页面）。
+  用来验证解析器的退化路径：当 #songlist 不存在时，仍然能靠
+  "本专辑路径前缀 + .mp3 结尾"这两个条件找出曲目，且不误收无关链接。
+-->
+<html lang="en">
+<head><meta charset="UTF-8"><title>Mock Album No Table (2020)</title></head>
+<body>
+<div class="browseBar"><a href="/game-soundtracks/browse/A">A</a></div>
+
+<h1>Mock Album No Table (2020)</h1>
+
+<div class="someOtherLayout">
+    <a href="/game-soundtracks/album/mock-album-notable/01%2520Alpha.mp3">Alpha</a>
+    <a href="/game-soundtracks/album/mock-album-notable/02%2520Beta.mp3">Beta</a>
+</div>
+
+<!-- 干扰：别的专辑 -->
+<a href="/game-soundtracks/album/another-album-2021/01%2520Gamma.mp3">Another Album</a>
+<!-- 干扰：同前缀但非 .mp3 -->
+<a href="/game-soundtracks/album/mock-album-notable/change_log">Changelog</a>
+</body>
+</html>

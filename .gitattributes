@@ -1,0 +1,15 @@
+# 统一按 LF 存库，避免 Windows 上 CRLF/LF 混排导致 diff 噪声
+* text=auto eol=lf
+
+# 批处理必须保持 CRLF，否则 cmd 解析可能出问题
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# 二进制
+*.png binary
+*.ico binary
+*.exe binary
+*.zip binary
+*.pyz binary
+*.dll binary
+*.pyd binary

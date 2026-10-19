@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+  测试夹具（fixture）—— 合成页面，不是从真实站点抓下来的原样 HTML。
+
+  它的作用：在没有网络、或者站点拒绝访问的情况下，也能验证"解析规则"是否正确。
+  它刻意模仿了在真实站点上**已观察到**的链接约定：
+    · 曲目链接以 .mp3 结尾（其实是详情页，不是音频文件）；
+    · 同一首曲目在页面上会出现多次（下载 / 时长 / 大小等列），需要去重；
+    · 链接是根相对路径（以 / 开头），需要用 urljoin 拼成绝对地址；
+    · 文件名里的空格是双重编码的 %2520；
+    · 曲名可能含日文等非 ASCII 字符。
+
+  页面里还故意放了多种"干扰链接"（导航、相关专辑、论坛、变更日志），
+  用来验证解析规则确实被限制在本专辑范围内。
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mock Album (2020) MP3 - Download Soundtracks for FREE!</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<!-- 干扰 1：字母导航，和专辑路径无关 -->
+<div class="browseBar">
+    <a href="/game-soundtracks/browse/0-9">0-9</a>
+    <a href="/game-soundtracks/browse/A">A</a>
+    <a href="/game-soundtracks/browse/B">B</a>
+</div>
+
+<h1>Mock Album (2020)</h1>
+
+<table id="albumMetadata">
+    <tr><td>Platform:</td><td><a href="/game-soundtracks/windows">Windows</a></td></tr>
+    <tr><td>Year:</td><td>2020</td></tr>
+    <tr><td>Number of Files:</td><td>3</td></tr>
+</table>
+
+<!-- 这就是真正的曲目表。解析时优先只在这张表里找链接。 -->
+<table id="songlist">
+    <thead>
+    <tr><th>#</th><th>Song Name</th><th>Duration</th><th>MP3</th><th>FLAC</th></tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="playlistNumber">1</td>
+        <td class="playlistDownloadSong">
+            <a href="/game-soundtracks/album/mock-album-2020/01%2520Track%2520One.mp3">Track One</a>
+        </td>
+        <!-- 干扰 2：指向"本专辑自己"的普通链接，不以 .mp3 结尾，必须被排除 -->
+        <td><a href="/game-soundtracks/album/mock-album-2020">1:23</a></td>
+        <td><a href="/game-soundtracks/album/mock-album-2020/01%2520Track%2520One.mp3">2.4 MB</a></td>
+        <td><a href="/game-soundtracks/album/mock-album-2020/01%2520Track%2520One.mp3">8.1 MB</a></td>
+    </tr>
+    <tr>
+        <td class="playlistNumber">2</td>
+        <td class="playlistDownloadSong">
+            <a href="/game-soundtracks/album/mock-album-2020/02%2520%E6%9D%B1%E4%BA%AC%2520Sky.mp3">東京 Sky</a>
+        </td>
+        <td><a href="/game-soundtracks/album/mock-album-2020">2:07</a></td>
+        <td><a href="/game-soundtracks/album/mock-album-2020/02%2520%E6%9D%B1%E4%BA%AC%2520Sky.mp3">3.1 MB</a></td>
+        <td><a href="/game-soundtracks/album/mock-album-2020/02%2520%E6%9D%B1%E4%BA%AC%2520Sky.mp3">9.9 MB</a></td>
+    </tr>
+    <tr>
+        <td class="playlistNumber">3</td>
+        <td class="playlistDownloadSong">
+            <a href="/game-soundtracks/album/mock-album-2020/03%2520Bad%253A%2520Name.mp3">Bad: Name?</a>
+        </td>
+        <td><a href="/game-soundtracks/album/mock-album-2020">0:58</a></td>
+        <td><a href="/game-soundtracks/album/mock-album-2020/03%2520Bad%253A%2520Name.mp3">1.8 MB</a></td>
+        <td><a href="/game-soundtracks/album/mock-album-2020/03%2520Bad%253A%2520Name.mp3">5.5 MB</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- 干扰 3：变更日志，同专辑路径但非 .mp3 -->
+<p><a href="/game-soundtracks/album/mock-album-2020/change_log">Changelog</a></p>
+
+<!-- 干扰 4：相关专辑（另一个 slug，必须被排除） -->
+<h2>You may also like</h2>
+<div class="relatedAlbums">
+    <a href="/game-soundtracks/album/other-album-2019/01%2520Other%2520Song.mp3">Other Album (2019)</a>
+</div>
+
+<!-- 干扰 5：站内其他板块 -->
+<div class="footer">
+    <a href="https://downloads.khinsider.com/forums/topic/12345">Discuss this album</a>
+    <a href="/playlist/1">Playlists</a>
+</div>
+</body>
+</html>

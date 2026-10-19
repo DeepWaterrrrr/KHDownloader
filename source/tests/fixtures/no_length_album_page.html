@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+  测试夹具 —— "无长度专辑"页（合成页面）。
+
+  slug 是 mock-album-nolen。它的曲目详情页会把 MP3 指向一个
+  **不发送 Content-Length** 的端点，用来验证界面在"不知道自己总共多大"时
+  依然诚实地显示进度，而不会凭空编一个百分比出来。
+-->
+<html lang="en">
+<head><meta charset="UTF-8"><title>Mock No-Length Album MP3</title></head>
+<body>
+<h1>Mock No-Length Album</h1>
+<table id="songlist">
+    <thead>
+    <tr><th>#</th><th>Song Name</th><th>Duration</th><th>MP3</th><th>FLAC</th></tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="playlistNumber">1</td>
+        <td class="playlistDownloadSong">
+            <a href="/game-soundtracks/album/mock-album-nolen/01%2520Unknown%2520Size.mp3">Unknown Size</a>
+        </td>
+        <td><a href="/game-soundtracks/album/mock-album-nolen">1:00</a></td>
+        <td><a href="/game-soundtracks/album/mock-album-nolen/01%2520Unknown%2520Size.mp3">? MB</a></td>
+        <td><a href="/game-soundtracks/album/mock-album-nolen/01%2520Unknown%2520Size.mp3">? MB</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

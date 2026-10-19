@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+  测试夹具 —— "慢速专辑"页（合成页面）。
+
+  和 album_page.html 结构一样，只是 slug 不同：mock-album-slow。
+  它的曲目详情页会把 MP3 指向一个"慢慢发"的端点，
+  这样测试才有机会在"正在下载"的过程中按下取消，验证：
+    · 取消能真的停下来；
+    · 没下完的 .part 被删掉；
+    · 已经下好的曲目不受影响。
+
+  三首曲目，够验证"第一首下载中取消"和"第二首开始前取消"两种情况。
+-->
+<html lang="en">
+<head><meta charset="UTF-8"><title>Mock Slow Album MP3</title></head>
+<body>
+<h1>Mock Slow Album</h1>
+<table id="songlist">
+    <thead>
+    <tr><th>#</th><th>Song Name</th><th>Duration</th><th>MP3</th><th>FLAC</th></tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="playlistNumber">1</td>
+        <td class="playlistDownloadSong">
+            <a href="/game-soundtracks/album/mock-album-slow/01%2520Slow%2520One.mp3">Slow One</a>
+        </td>
+        <td><a href="/game-soundtracks/album/mock-album-slow">1:00</a></td>
+        <td><a href="/game-soundtracks/album/mock-album-slow/01%2520Slow%2520One.mp3">2.0 MB</a></td>
+        <td><a href="/game-soundtracks/album/mock-album-slow/01%2520Slow%2520One.mp3">7.0 MB</a></td>
+    </tr>
+    <tr>
+        <td class="playlistNumber">2</td>
+        <td class="playlistDownloadSong">
+            <a href="/game-soundtracks/album/mock-album-slow/02%2520Slow%2520Two.mp3">Slow Two</a>
+        </td>
+        <td><a href="/game-soundtracks/album/mock-album-slow">1:10</a></td>
+        <td><a href="/game-soundtracks/album/mock-album-slow/02%2520Slow%2520Two.mp3">2.2 MB</a></td>
+        <td><a href="/game-soundtracks/album/mock-album-slow/02%2520Slow%2520Two.mp3">7.7 MB</a></td>
+    </tr>
+    <tr>
+        <td class="playlistNumber">3</td>
+        <td class="playlistDownloadSong">
+            <a href="/game-soundtracks/album/mock-album-slow/03%2520Slow%2520Three.mp3">Slow Three</a>
+        </td>
+        <td><a href="/game-soundtracks/album/mock-album-slow">1:20</a></td>
+        <td><a href="/game-soundtracks/album/mock-album-slow/03%2520Slow%2520Three.mp3">2.4 MB</a></td>
+        <td><a href="/game-soundtracks/album/mock-album-slow/03%2520Slow%2520Three.mp3">8.4 MB</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

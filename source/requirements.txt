@@ -1,0 +1,19 @@
+# 运行这个项目需要的第三方库
+# 安装命令：pip install -r requirements.txt
+#
+# 必需的两个（v008 就有）：
+requests>=2.28        # 发 HTTP 请求（兼容层：见 khdownloader_transport.py）
+beautifulsoup4>=4.11  # 解析 HTML
+#
+# v1.0.0 新增 —— 解决"被站点防火墙（Cloudflare 人机校验）挡住"的问题：
+#   curl_cffi：给请求换上真实浏览器的 TLS/HTTP2 指纹。
+#              站点拦的是**网络指纹**，不是 User-Agent，所以只有换指纹才有效。
+#              装上它，专辑页就能正常打开（实测 200 + 完整曲目表）。
+#              不装也能跑：会自动退回普通 requests，只是又会被人机校验拦住。
+curl_cffi>=0.7
+#
+# 可选（不是必须）—— 真浏览器兜底：
+#   playwright：万一站点以后收紧策略，用真浏览器过一次校验，再把会话交回来。
+#              需要额外执行一次 `python -m playwright install chromium` 下载浏览器内核。
+#              没装 / 没下内核时自动跳过，不影响其它两条路径。
+# playwright>=1.40

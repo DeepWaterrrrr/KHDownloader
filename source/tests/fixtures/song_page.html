@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+  测试夹具：曲目详情页（合成页面）。
+  真实站点上，专辑页里那个以 .mp3 结尾的链接点开之后是这样一个 HTML 页面，
+  页面上才有指向"文件主机"的真正 MP3 地址。
+  这里刻意把真正的文件地址放在**另一个主机名**下，
+  用来验证解析时"优先选跨主机链接"的规则。
+-->
+<html lang="en">
+<head><meta charset="UTF-8"><title>Track One MP3 - Mock Album (2020) - Download Soundtracks for FREE!</title></head>
+<body>
+<div class="browseBar"><a href="/game-soundtracks/browse/A">A</a></div>
+
+<p>Go back to the album -
+    <a href="https://downloads.khinsider.com/game-soundtracks/album/mock-album-2020">Mock Album (2020)</a></p>
+
+<p>Album name: <b>Mock Album (2020)</b><br>
+    Song name: <b>Track One</b></p>
+
+<!-- 干扰：同主机的另一个 .mp3 链接（不是本曲目的文件），
+     只有在找不到跨主机链接时才会退而选它 -->
+<p><a href="/help/what-is-an-mp3.mp3">What is an MP3?</a></p>
+
+<!-- 真正的下载链接。真实站点上它长这样（主机名是文件站，不是页面站）：
+     https://文件站域名/soundtracks/<专辑 slug>/<一串随机字符>/<曲目文件名>.mp3
+     测试时由 tests/mock_site.py 把 {{MP3_URL}} 替换成本地测试服务器地址。 -->
+<p class="songDownloadLink">
+    <a href="{{MP3_URL}}">Click here</a>
+</p>
+
+<table id="songInfoTable">
+    <tr><td>File size:</td><td>2.42 MB</td></tr>
+    <tr><td>Duration:</td><td>1:23</td></tr>
+</table>
+</body>
+</html>
