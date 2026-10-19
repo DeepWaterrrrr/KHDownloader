@@ -111,7 +111,23 @@ python tools\scan_secrets.py --root .. --json ..\.diag\secrets_scan.json
 
 退出码 0 = 无"硬命中"（密钥类）；发现疑似凭据时打印文件:行号并以退出码 1 结束，可直接接进 CI。
 
-## 10. 仍需你确认的两点
+## 10. 发布结果（已执行）
 
-1. `docs/screenshots/v008_gui_frozen_launch.png` 里露了 `C:\Users\<用户名>\Downloads\KHInsider`——**公开**仓库要不要我打成马赛克 / 换成新版截图？
-2. 仓库可见性：**私有**（默认建议）还是**公开**？
+| 项 | 值 |
+| --- | --- |
+| 仓库 | <https://github.com/DeepWaterrrrr/KHDownloader>（**公开**） |
+| 首次提交 | `cc9640e` —— 59 个文件（源码 + 文档 + 夹具），无二进制、无 `.diag/` |
+| 版本 | `v1.0.0`（原内部阶段号 v009 全面弃用） |
+| Release | <https://github.com/DeepWaterrrrr/KHDownloader/releases/tag/v1.0.0> |
+| 附件 | `KHDownloader-v1.0.0-win64.zip`（44,674,684 字节，SHA-256 `bbbcd426…c5bc2`）、`KHDownloader.exe`（43,618,401 字节） |
+| 提交身份 | 仓库内单独设为 `DeepWaterrrrr <DeepWaterrrrr@users.noreply.github.com>`，未使用全局真实邮箱 |
+
+已处理：绝对路径全部换成 `C:\Users\<用户名>`；`verify_user_original_v008.py` 里硬编码的本机目录改为环境变量 `KHD_ORIG_DIR`。
+
+保留并知情的两处：
+
+1. `docs/screenshots/v008_gui_frozen_launch.png` 里能看到 `C:\Users\<用户名>\Downloads\KHInsider` —— 只露用户名，无其他信息；
+2. `docs/EXECUTION_LOG.md` 里两个回环端口（`127.0.0.1:5389` / `127.0.0.1:7890`），历史调试记录。
+
+> 想改成私有：`gh repo edit DeepWaterrrrr/KHDownloader --visibility private --accept-visibility-change-consequences`
+
